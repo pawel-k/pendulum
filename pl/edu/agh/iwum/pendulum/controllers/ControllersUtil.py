@@ -1,11 +1,14 @@
 from pl.edu.agh.iwum.pendulum.controllers.RandomController import RandomController
+from pl.edu.agh.iwum.pendulum.controllers.reinforced.ReinforcedController import ReinforcedController
 
 
 class ControllersUtil(object):
     RANDOM_CONTROLLER = RandomController.NAME
+    REINFORCED_CONTROLLER = ReinforcedController.NAME
 
     REGISTERED_CONTROLLERS = {
-        RANDOM_CONTROLLER: RandomController
+        RANDOM_CONTROLLER: RandomController,
+        REINFORCED_CONTROLLER: ReinforcedController
     }
 
     @staticmethod

@@ -79,6 +79,7 @@ class MainWindow(QMainWindow):
 
     def __create_controller(self):
         return ControllersUtil.get_controller(str(self.ui.controller.currentText()))(
+            float(self.ui.pendulumLength.text()),
             float(self.ui.pendulumMass.text()),
             float(self.ui.cartMass.text())
         )

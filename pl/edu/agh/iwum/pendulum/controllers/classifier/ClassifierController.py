@@ -2,8 +2,8 @@ from pl.edu.agh.iwum.pendulum.controllers.Controller import Controller
 from sklearn import tree
 
 class ClassifierController(Controller):
-    def __init__(self, pendulum_mass, cart_mass):
-        super.__init__(pendulum_mass,cart_mass)
+    def __init__(self,pendulum_length,pendulum_mass, cart_mass):
+        super.__init__(pendulum_length,pendulum_mass,cart_mass)
         self.decisionTree = tree.DecisionTreeClassifier()
 
     def learn(self, dataset):
