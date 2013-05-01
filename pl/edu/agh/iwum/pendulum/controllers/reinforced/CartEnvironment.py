@@ -3,12 +3,12 @@ from pybrain.rl.environments import Environment
 
 class CartEnvironment(Environment):
 
-    def __init__(self,model,cart_position_ranges,car_velocity_ranges,angles_ranges,angular_velocity_ranges):
+    def __init__(self,model,cart_position_ranges,car_velocity_ranges,angles_ranges,angular_velocity_ranges,force_granularity):
         self.model = model
         self.reset()
         mass = model.cart_mass + model.pendulum_mass
         mass*=10
-        self.allActions = [-mass/i for i in range(1,11)]+[mass/i for i in range(1,11)]
+        self.allActions = [-mass/i for i in range(1,force_granularity)]+[mass/i for i in range(1,force_granularity)]
         self.cart_position_ranges = cart_position_ranges
         self.cart_velocity_ranges = car_velocity_ranges
         self.angles_ranges = angles_ranges
@@ -30,19 +30,14 @@ class CartEnvironment(Environment):
         self.model.apply(action,dt)
         return self.model.get_state()
 
-    def get_current_state_reward(self):
-        if (self.angular_position < 0.1) and (self.angular_position > -0.1):# and (self.cart_position < 0.24) and (self.cart_position > -0.24) and (abs(self.angular_velocity) < 3.14):
-            return 1
-        else:
-            return 0
-#        reward = (1-abs(self.angular_position/3.14)) #* (abs(self.cart_position)-2.41)
-#        return reward
+    def failed(self):
+        return (abs(self.angular_position) > 0.21) or (abs(self.cart_position) > 3)
 
     def reset(self):
-        self.angular_position = random.uniform(-1,1)
-        self.angular_velocity = random.uniform(-4,4)
-        self.cart_position = 0
-        self.cart_velocity = random.uniform(-1,1)
+        self.angular_position = 0#random.uniform(-2,2)
+        self.angular_velocity = 0#random.uniform(-4,4)
+        self.cart_position = 0#random.uniform(-5,5)
+        self.cart_velocity = 0#random.uniform(-1,1)
         self._set_model()
         self.sensors = self.model.get_state()
 

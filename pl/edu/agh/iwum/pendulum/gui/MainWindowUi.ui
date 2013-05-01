@@ -46,7 +46,7 @@
              <item row="0" column="1">
               <widget class="QLineEdit" name="visibility">
                <property name="text">
-                <string>2</string>
+                <string>4</string>
                </property>
               </widget>
              </item>
@@ -78,7 +78,7 @@
              <item row="0" column="1">
               <widget class="QLineEdit" name="pendulumLength">
                <property name="text">
-                <string>0.5</string>
+                <string>1</string>
                </property>
               </widget>
              </item>
@@ -112,7 +112,7 @@
                 <bool>true</bool>
                </property>
                <property name="text">
-                <string>0.5</string>
+                <string>1</string>
                </property>
               </widget>
              </item>
@@ -138,7 +138,7 @@
              <item row="0" column="1">
               <widget class="QLineEdit" name="pendulumAngle">
                <property name="text">
-                <string>10</string>
+                <string>1</string>
                </property>
               </widget>
              </item>
@@ -205,7 +205,6 @@
              </item>
             </layout>
             <zorder>controller</zorder>
-            <zorder>controller</zorder>
             <zorder>label_9</zorder>
            </widget>
           </item>
@@ -247,7 +246,6 @@
       <zorder>run</zorder>
       <zorder>allSettings</zorder>
       <zorder>stop</zorder>
-      <zorder>groupBox_3</zorder>
      </widget>
     </item>
     <item>
