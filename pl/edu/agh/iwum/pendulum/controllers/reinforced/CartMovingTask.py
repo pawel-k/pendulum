@@ -1,30 +1,28 @@
-from pybrain.rl.environments import Task, EpisodicTask
+from numpy import array
+from pybrain.rl.environments import Task
 
-class CartMovingTask(EpisodicTask):
+class CartMovingTask(Task):
 
-    def __init__(self,env,max_steps = 100):
-        EpisodicTask.__init__(self, env)
-        self.N = max_steps
-        self.t = 0
-        #                    [angular_position,angular_vel,cart_pos,cart_vel]
-        self.sensor_limits = [(-3.14,3.14),(-1, 1),(-100.0, +100.0),(-1,1)]
-        mass = env.model.pendulum_mass + env.model.cart_mass
-        #                    [F]
-        self.actor_limits = [(-mass/4, mass/4)]
-
-    def reset(self):
-        EpisodicTask.reset(self)
-        self.t = 0
+    def __init__(self,env,max_steps=10):
+        self.env = env
+        self.sensor_limits = None
+        self.actor_limits =  None
+        self.max_steps = max_steps
+        self.current_steps = 0
 
     def performAction(self, action):
-        self.t+=1
-        EpisodicTask.performAction(self, action)
-
-    def isFinished(self):
-        if self.t> self.N:
-            return True
-        return False
+        Task.performAction(self, int(action[0]))
 
     def getReward(self):
         """ Compute and return the current reward (i.e. corresponding to the last action performed) """
-        return self.env.get_current_state_reward()
+        if (self.current_steps > self.max_steps):
+            self.env.reset()
+            self.current_steps=0
+            return 1
+        else:
+            self.current_steps+=1
+            return 0
+
+
+    def getObservation(self):
+        return array([self.env.get_current_state()])

@@ -53,4 +53,5 @@ class InvertedPendulumModel(object):
             observer.update_state(self.angular_position, self.cart_position)
 
     def __normalize_angle(self, x):
-        return (x + pi) % (2 * pi) - pi
+        angle = (x + pi) % (2 * pi) - pi
+        return angle
