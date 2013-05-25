@@ -16,7 +16,6 @@ class ReinforcedController(Controller):
         self.model = InvertedPendulumModel(self.pendulum_length,self.pendulum_mass,self.cart_mass)
         self.force_granularity=2
         self.environment = CartEnvironment(self.model, *self.ranges,force_granularity=self.force_granularity)
-        self.learn(1000)
 #        self.load()
 
     def learn(self,number_of_iterations):

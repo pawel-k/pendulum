@@ -212,7 +212,17 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="learn">
+         <property name="text">
+          <string>Learn model</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="run">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Run physics engine</string>
          </property>
@@ -246,6 +256,7 @@
       <zorder>run</zorder>
       <zorder>allSettings</zorder>
       <zorder>stop</zorder>
+      <zorder>learn</zorder>
      </widget>
     </item>
     <item>

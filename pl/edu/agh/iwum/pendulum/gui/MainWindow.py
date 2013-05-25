@@ -26,9 +26,15 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def on_run_clicked(self):
         self.__set_widget_state(running=True)
+        self.set_pendulum_model()
+        self.simulation.run()
+
+    @pyqtSlot()
+    def on_learn_clicked(self):
+        self.ui.run.setEnabled(True)
         self.__create_scene()
         self.simulation = Simulation(self.pendulumModel, self.__create_controller())
-        self.simulation.run()
+        self.simulation.controller.learn(10000)
 
     @pyqtSlot()
     def on_stop_clicked(self):
@@ -55,6 +61,14 @@ class MainWindow(QMainWindow):
     def on_cartPosition_lostFocus(self):
         self.__create_scene()
 
+    def set_pendulum_model(self):
+        self.pendulumModel.set_state(
+            angular_position=float(self.ui.pendulumAngle.text()) * pi / 180.0,
+            angular_velocity=float(self.ui.angularVelocity.text()),
+            cart_position=float(self.ui.cartPosition.text()),
+            cart_velocity=float(self.ui.cartSpeed.text())
+        )
+
     def __create_scene(self):
         self.pendulumView = PendulumView(
             self.width(),
@@ -70,12 +84,7 @@ class MainWindow(QMainWindow):
             cart_mass=float(self.ui.cartMass.text())
         )
         self.pendulumModel.register_observer(self.pendulumView)
-        self.pendulumModel.set_state(
-            angular_position=float(self.ui.pendulumAngle.text()) * pi / 180.0,
-            angular_velocity=float(self.ui.angularVelocity.text()),
-            cart_position=float(self.ui.cartPosition.text()),
-            cart_velocity=float(self.ui.cartSpeed.text())
-        )
+        self.set_pendulum_model()
 
     def __create_controller(self):
         return ControllersUtil.get_controller(str(self.ui.controller.currentText()))(

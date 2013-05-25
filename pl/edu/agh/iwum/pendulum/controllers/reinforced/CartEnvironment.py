@@ -36,7 +36,7 @@ class CartEnvironment(Environment):
     def reset(self):
         self.angular_position = 0#random.uniform(-2,2)
         self.angular_velocity = 0#random.uniform(-4,4)
-        self.cart_position = 0#random.uniform(-5,5)
+        self.cart_position = 0#random.uniform(-3,3)
         self.cart_velocity = 0#random.uniform(-1,1)
         self._set_model()
         self.sensors = self.model.get_state()

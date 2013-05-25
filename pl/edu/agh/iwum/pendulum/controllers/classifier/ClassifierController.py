@@ -9,10 +9,10 @@ class ClassifierController(Controller):
     def __init__(self,pendulum_length,pendulum_mass, cart_mass):
         Controller.__init__(self,pendulum_length,pendulum_mass,cart_mass)
         self.decisionTree = tree.DecisionTreeClassifier()
-        dataset_generator = DatasetGenerator(pendulum_mass, cart_mass,pendulum_length)
-        self.learn(dataset_generator.generateRandomDataset(10000))
+        self.dataset_generator = DatasetGenerator(pendulum_mass, cart_mass,pendulum_length)
 
-    def learn(self, dataset):
+    def learn(self, number):
+        dataset = self.dataset_generator.generateRandomDataset(number)
         self.decisionTree = self.decisionTree.fit(dataset.data, dataset.target)
         with open("test.dot", 'w') as f:
             f = tree.export_graphviz(self.decisionTree, out_file=f)

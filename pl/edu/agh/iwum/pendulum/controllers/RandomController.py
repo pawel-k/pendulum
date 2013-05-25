@@ -10,3 +10,6 @@ class RandomController(Controller):
 
     def calculate_force(self, angular_position, angular_velocity, cart_position, cart_velocity):
         return random.uniform(-1, 1)
+
+    def learn(self,_n):
+        pass

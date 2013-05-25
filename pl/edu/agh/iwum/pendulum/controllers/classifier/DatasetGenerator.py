@@ -39,7 +39,7 @@ class DatasetGenerator(object):
             return -self.force
         elif(new_state[2] < -10):
             return self.force
-        elif(new_state[0]<0.0174532925 and new_state[0]>0) or (new_state[0]>-0.0174532925 and new_state[0]<0): #1 stopień
+        elif(new_state[0]<0.0174532925 and new_state[0]>0) or (new_state[0]>-0.0174532925 and new_state[0]<0):
             return self.sign(new_state[2])*self.force
         elif (new_state[0] > 0):
             return self.force
