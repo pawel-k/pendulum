@@ -1,7 +1,7 @@
 from pl.edu.agh.iwum.pendulum.controllers.Controller import Controller
 from sklearn import tree
 from pl.edu.agh.iwum.pendulum.controllers.classifier.DatasetGenerator import DatasetGenerator
-import StringIO, pydot
+from sklearn import naive_bayes
 
 class ClassifierController(Controller):
     NAME = "Classifier Controller"
@@ -9,6 +9,7 @@ class ClassifierController(Controller):
     def __init__(self,pendulum_length,pendulum_mass, cart_mass):
         Controller.__init__(self,pendulum_length,pendulum_mass,cart_mass)
         self.decisionTree = tree.DecisionTreeClassifier()
+        #self.decisionTree = naive_bayes.GaussianNB()
         self.dataset_generator = DatasetGenerator(pendulum_mass, cart_mass,pendulum_length)
 
     def learn(self, number):

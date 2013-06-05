@@ -7,10 +7,11 @@ class Simulation(object):
         self.pendulum_model = model
         self.controller = controller
 
-    def run(self):
+    def run(self,speedMultiplier,dt):
         self.running = True
         while self.running:
-            self.__step(0.01)
+            for i in range(speedMultiplier):
+                self.__step(dt)
             QApplication.instance().processEvents()
 
     def __step(self, dt):

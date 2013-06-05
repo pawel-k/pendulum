@@ -27,14 +27,14 @@ class MainWindow(QMainWindow):
     def on_run_clicked(self):
         self.__set_widget_state(running=True)
         self.set_pendulum_model()
-        self.simulation.run()
+        self.simulation.run(int(self.ui.speedMultiplier.text()),float(self.ui.dt.text()))
 
     @pyqtSlot()
     def on_learn_clicked(self):
         self.ui.run.setEnabled(True)
         self.__create_scene()
         self.simulation = Simulation(self.pendulumModel, self.__create_controller())
-        self.simulation.controller.learn(10000)
+        self.simulation.controller.learn(int(self.ui.iterations.text()))
 
     @pyqtSlot()
     def on_stop_clicked(self):
@@ -59,6 +59,10 @@ class MainWindow(QMainWindow):
 
     @pyqtSlot()
     def on_cartPosition_lostFocus(self):
+        self.__create_scene()
+
+    @pyqtSlot()
+    def on_updateButton_clicked(self):
         self.__create_scene()
 
     def set_pendulum_model(self):

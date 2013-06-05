@@ -50,6 +50,34 @@
                </property>
               </widget>
              </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="speedMultiplier">
+               <property name="text">
+                <string>1</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Speed multiplier</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>dt (s)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="dt">
+               <property name="text">
+                <string>0.01</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
@@ -203,19 +231,36 @@
              <item row="0" column="1">
               <widget class="QComboBox" name="controller"/>
              </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="learn">
+               <property name="text">
+                <string>Learn model</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="iterations">
+               <property name="text">
+                <string>10000</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>Iterations</string>
+               </property>
+              </widget>
+             </item>
             </layout>
             <zorder>controller</zorder>
             <zorder>label_9</zorder>
+            <zorder>learn</zorder>
+            <zorder>iterations</zorder>
+            <zorder>label_10</zorder>
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="learn">
-         <property name="text">
-          <string>Learn model</string>
-         </property>
         </widget>
        </item>
        <item>
@@ -239,6 +284,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="updateButton">
+         <property name="text">
+          <string>Update</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -256,7 +308,7 @@
       <zorder>run</zorder>
       <zorder>allSettings</zorder>
       <zorder>stop</zorder>
-      <zorder>learn</zorder>
+      <zorder>updateButton</zorder>
      </widget>
     </item>
     <item>
