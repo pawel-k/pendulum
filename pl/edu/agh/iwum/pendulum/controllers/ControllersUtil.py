@@ -1,6 +1,6 @@
 from pl.edu.agh.iwum.pendulum.controllers.RandomController import RandomController
 from pl.edu.agh.iwum.pendulum.controllers.classifier.ClassifierController import ClassifierController
-from pl.edu.agh.iwum.pendulum.controllers.classifierBlind.ClassifierBlindController import ClassifierRegressionController
+from pl.edu.agh.iwum.pendulum.controllers.classifierBlind.ClassifierRegressionController import ClassifierRegressionController
 from pl.edu.agh.iwum.pendulum.controllers.reinforced.ReinforcedController import ReinforcedController
 
 
