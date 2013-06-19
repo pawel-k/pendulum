@@ -25,7 +25,6 @@ class DatasetBlindGenerator(object):
             for situation in situations:
                 model_response = self._evaluate_model_response(situation)
                 result_dataset.add_case(list(situation),model_response)
-            print i
         return result_dataset
 
     def _get_random_situations(self):

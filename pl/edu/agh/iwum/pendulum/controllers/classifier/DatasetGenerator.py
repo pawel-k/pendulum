@@ -20,7 +20,6 @@ class DatasetGenerator(object):
             situation = self._get_random_situation()
             conteract = self._evaluate_model_counteraction(situation)
             result_dataset.add_case(list(situation),conteract)
-            print i
         return result_dataset
 
     def _get_random_situation(self):

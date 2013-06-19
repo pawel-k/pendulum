@@ -26,7 +26,6 @@ class ReinforcedController(Controller):
         agent = LearningAgent(self.controller, learner)
         experiment = Experiment(task, agent)
         for i in range(number_of_iterations):
-            print i
             experiment.doInteractions(1)
             agent.learn()
             agent.reset()
